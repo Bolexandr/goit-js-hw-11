@@ -40,9 +40,10 @@ export async function aysynk(inputValue, numberOfPage, event) {
     );
   } else if (data.length <= 39) {
     document.querySelector('.load-more').classList.add('isHiden');
-    Notify.failure(
-      "We're sorry, but you've reached the end of search results."
-    );
+    if (event.target.innerText === 'Load more')
+      Notify.failure(
+        "We're sorry, but you've reached the end of search results."
+      );
   }
 
   console.log(data);
