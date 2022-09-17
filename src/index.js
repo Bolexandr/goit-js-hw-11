@@ -41,16 +41,6 @@ function hendlerSubmit(ev) {
 }
 
 loadMoreBtn.addEventListener('click', ev => {
-  console.log(document.firstElementChild.getBoundingClientRect());
-  const { height: cardHeight } = document;
-  document.querySelector('.gallery');
-  document.firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
-
   const inputValue = document.querySelector('form')[0].value;
   pageCount += 1;
   aysynk(inputValue, pageCount, ev);
