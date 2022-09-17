@@ -3,8 +3,8 @@ const axios = require('axios').default;
 
 const BASE_URL = `https://pixabay.com/api/?key=`;
 const API_KEY = '29932644-4e0f39fd65af4cced23d22843';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { aysynk } from './js/fetch';
 export let pageCount = null;
