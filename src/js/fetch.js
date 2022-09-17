@@ -16,37 +16,33 @@ const lightbox = new SimpleLightbox('.photo-card_linc', {
 });
 
 export async function aysynk(inputValue, numberOfPage, event) {
-  const response = axios.get(
+  const response = await axios.get(
     `${BASE_URL}${API_KEY}&q=${inputValue}&image_type=photo&orientation=horizontal&safesearch=true&page=${numberOfPage}&per_page=40`
   );
 
-  // console.log(response);
+  const data = response.data.hits;
 
-  const res = await response;
-
-  // console.log(res);
-
-  const data = res.data.hits;
-
-  if (data.length > 0) {
+  if (data.length >= 40) {
     document.querySelector('.load-more').classList.remove('isHiden');
   }
   if (event.target.innerText === ' Search' && data.length !== 0) {
-    Notify.success(`Hooray! We found ${res.data.totalHits} images.`);
+    Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
   }
-  if (data.length === 0) {
+  if (data.length === 0 && event.target.innerText === 'Search') {
     Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
-  } else if (data.length <= 39) {
-    document.querySelector('.load-more').classList.add('isHiden');
+  }
+
+  if (data.length === 0) {
     if (event.target.innerText === 'Load more')
-      Notify.failure(
-        "We're sorry, but you've reached the end of search results."
-      );
+      document.querySelector('.load-more').classList.add('isHiden');
+    Notify.failure(
+      "We're sorry, but you've reached the end of search results."
+    );
   }
 
   // console.log(data);
   createPhotoCard(cardItem(data));
-  lightbox.refresh();
+  lightbox.refresponseh();
 }
