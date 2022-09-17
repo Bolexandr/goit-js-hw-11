@@ -20,11 +20,11 @@ export async function aysynk(inputValue, numberOfPage, event) {
     `${BASE_URL}${API_KEY}&q=${inputValue}&image_type=photo&orientation=horizontal&safesearch=true&page=${numberOfPage}&per_page=40`
   );
 
-  console.log(response);
+  // console.log(response);
 
   const res = await response;
 
-  console.log(res);
+  // console.log(res);
 
   const data = res.data.hits;
 
@@ -46,7 +46,7 @@ export async function aysynk(inputValue, numberOfPage, event) {
       );
   }
 
-  console.log(data);
+  // console.log(data);
   createPhotoCard(cardItem(data));
   lightbox.refresh();
 }
