@@ -10,7 +10,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const lightbox = new SimpleLightbox('.photo-card_linc', {
-  captionsData: 'alt',
+  // captionsData: 'alt',
   captionDelay: 250,
   navText: ['<', '>'],
 });
@@ -44,5 +44,5 @@ export async function aysynk(inputValue, numberOfPage, event) {
 
   // console.log(data);
   createPhotoCard(cardItem(data));
-  lightbox.refresponseh();
+  lightbox.refresh();
 }
